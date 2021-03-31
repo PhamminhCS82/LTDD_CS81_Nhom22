@@ -4,53 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="Find location"
-            android:textSize="20sp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            android:layout_margin="20dp"/>
+            android:textSize="20sp" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search for your location..."
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/bg_search"
             android:drawableLeft="@drawable/ic_search_30"
-            android:drawablePadding="10dp"/>
+            android:drawablePadding="10dp"
+            android:hint="Search for your location..." />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cities"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"/>
+            android:text="Cities"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <!--Từ phần này ở xuống là dùng Java để tạo ra-->
         <LinearLayout
+            android:id="@+id/test"
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_added_city">
+            android:background="@drawable/bg_added_city"
+            android:elevation="20dp"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginLeft="25dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,14 +68,16 @@
                     android:text="60°"
                     android:textColor="@color/white"
                     android:textSize="50sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="Hồ Chí Minh"
                     android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:fontFamily="sans-serif"/>
+                    android:textSize="30sp" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -78,18 +88,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_added_city">
+            android:background="@drawable/bg_added_city"
+            android:elevation="20dp"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginLeft="25dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,36 +111,40 @@
                     android:text="50°"
                     android:textColor="@color/white"
                     android:textSize="50sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="Toronto"
                     android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:fontFamily="sans-serif"/>
+                    android:textSize="30sp" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/sun"/>
+                android:src="@drawable/sun" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_added_city">
+            android:background="@drawable/bg_added_city"
+            android:elevation="20dp"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginLeft="25dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -138,21 +154,46 @@
                     android:text="40°"
                     android:textColor="@color/white"
                     android:textSize="50sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="London"
                     android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:fontFamily="sans-serif"/>
+                    android:textSize="30sp" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/rain"/>
+                android:src="@drawable/rain" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_add_city"
+            android:orientation="horizontal"
+            android:gravity="center">
+           <ImageView
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:src="@drawable/plus"
+               android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add City"
+                android:textSize="20sp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
 
     </LinearLayout>
 
