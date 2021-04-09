@@ -75,7 +75,7 @@
                     android:fontFamily="sans-serif"
                     android:text="Hồ Chí Minh"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <ImageView
@@ -118,7 +118,7 @@
                     android:fontFamily="sans-serif"
                     android:text="Toronto"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <ImageView
@@ -161,7 +161,7 @@
                     android:fontFamily="sans-serif"
                     android:text="London"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <ImageView
