@@ -15,25 +15,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Find location"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/bg_search"
-            android:drawableLeft="@drawable/ic_search_30"
-            android:drawablePadding="10dp"
-            android:hint="Search for your location..." />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:text="Cities"
@@ -172,6 +153,7 @@
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
@@ -195,6 +177,12 @@
                 android:textColor="@color/black"/>
         </LinearLayout>
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addCity"
+            android:text="test"/>
     </LinearLayout>
 
 </ScrollView>
