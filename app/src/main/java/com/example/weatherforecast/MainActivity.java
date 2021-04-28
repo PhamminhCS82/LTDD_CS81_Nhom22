@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button addCity;
+    LinearLayout addCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
 
-            overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
+            overridePendingTransition(R.anim.slide_down, R.anim.slide_up);
         }
     }
 }
