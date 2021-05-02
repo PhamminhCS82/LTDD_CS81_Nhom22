@@ -10,10 +10,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout addCity;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addCity = findViewById(R.id.addCity);
+        toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
 
         addCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,15 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about:
-                Toast.makeText(MainActivity.this, "Ứng dụng dự bán thời tiết", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Thông tin ứng dụng", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.contact:
                 Toast.makeText(MainActivity.this, "Liên hệ với chúng tôi", Toast.LENGTH_LONG).show();

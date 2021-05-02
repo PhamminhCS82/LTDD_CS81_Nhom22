@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="20sp" />
-
+    <!--
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,5 +25,16 @@
         android:drawableLeft="@drawable/ic_search_30"
         android:drawablePadding="10dp"
         android:hint="Search for your location..." />
+        -->
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:queryHint="Search for your location..."
+        android:background="@drawable/bg_search"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"/>
 
 </LinearLayout>
