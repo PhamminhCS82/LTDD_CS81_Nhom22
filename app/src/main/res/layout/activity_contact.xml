@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactActivity"
+    android:background="#f2f2f2"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thông tin thành viên"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <!--Phạm Quang Minh-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp"
+            android:background="@drawable/bg_member">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/minh"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phạm Quang Minh"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010075minh@ou.edu.vn"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010075"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_minh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liên hệ"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!--Tất Quảng Kiệt-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:elevation="10dp"
+            android:background="@drawable/bg_member">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/kiet"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tất Quảng Kiệt"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010062kiet@ou.edu.vn"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010062"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_kiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liên hệ"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!--Lê Công Nhật-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:elevation="10dp"
+            android:background="@drawable/bg_member"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/nhat"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lê Công Nhật"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010091nhat@ou.edu.vn"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1851010091"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_nhat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liên hệ"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

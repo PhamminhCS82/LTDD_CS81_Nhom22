@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.contact:
                 Toast.makeText(MainActivity.this, "Liên hệ với chúng tôi", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, ContactActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
