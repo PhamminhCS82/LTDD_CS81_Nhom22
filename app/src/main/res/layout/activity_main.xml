@@ -35,7 +35,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_added_city"
-            android:elevation="20dp"
+            android:elevation="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -70,91 +70,19 @@
                 android:src="@drawable/night" />
         </LinearLayout>
 
+        <!--///////////////////////////////////////////////////-->
         <LinearLayout
+            android:id="@+id/layout_container"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_added_city"
-            android:elevation="20dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
 
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-thin"
-                    android:gravity="start"
-                    android:text="50°"
-                    android:textColor="@color/white"
-                    android:textSize="50sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:text="Toronto"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/sun" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_added_city"
-            android:elevation="20dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-thin"
-                    android:gravity="start"
-                    android:text="40°"
-                    android:textColor="@color/white"
-                    android:textSize="50sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:text="London"
-                    android:textColor="@color/white"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/rain" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add layout"/>
+        <!--///////////////////////////////////////////////////-->
 
         <LinearLayout
             android:id="@+id/addCity"
@@ -167,11 +95,11 @@
             android:background="@drawable/bg_add_city"
             android:orientation="horizontal"
             android:gravity="center">
-           <ImageView
-               android:layout_width="40dp"
-               android:layout_height="40dp"
-               android:src="@drawable/plus"
-               android:layout_marginRight="5dp"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:layout_marginRight="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
