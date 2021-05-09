@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,11 +20,11 @@ import com.example.weatherforecast.retrofitclient.RetrofitClient;
 import com.example.weatherforecast.retrofitclient.WeatherService;
 import com.squareup.picasso.Picasso;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout addCity;
@@ -43,12 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        addCity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
+        addCity.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -68,21 +64,22 @@ public class MainActivity extends AppCompatActivity {
         Call<WeatherResponse> call = weatherService.getWeatherByLatLon(lat,lon,Common.API_KEY_ID,"metric");
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
-            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+            public void onResponse(@NonNull Call<WeatherResponse>  call,@NonNull Response<WeatherResponse> response) {
                 if(response.code() == 200) {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
                     double temp = weatherResponse.getMain().getTemp();
-                    tvTemp.setText(Double.toString(temp) + '°');
+                    String tempString = Double.toString(temp) + '°';
+                    tvTemp.setText(tempString);
                     tvCity.setText(weatherResponse.getName());
-                    Picasso.get().load(new StringBuilder("http://openweathermap.org/img/wn/")
-                            .append(weatherResponse.getWeather().get(0).getIcon())
-                    .append("@2x.png").toString()).into(imgWeatherIcon);
+                    Picasso.get().load("http://openweathermap.org/img/wn/" +
+                            weatherResponse.getWeather().get(0).getIcon() +
+                            "@2x.png").into(imgWeatherIcon);
                 }
             }
 
             @Override
-            public void onFailure(Call<WeatherResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<WeatherResponse> call, Throwable t) {
                 tvCity.setText(t.getMessage());
             }
         });
