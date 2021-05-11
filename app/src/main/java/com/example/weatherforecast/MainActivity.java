@@ -27,7 +27,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout addCity;
+    LinearLayout addCity,test;
     Toolbar toolbar;
     TextView tvTemp, tvCity;
     ImageView imgWeatherIcon;
@@ -46,11 +46,16 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
         });
+        test.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, details.class);
+            startActivity(intent);
+        });
     }
 
 
     //Anh xa
     public void getView() {
+        test = findViewById(R.id.test);
         addCity = findViewById(R.id.addCity);
         toolbar = findViewById(R.id.toolBar);
         tvCity = findViewById(R.id.tv_city);
