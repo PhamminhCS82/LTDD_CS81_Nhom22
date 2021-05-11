@@ -27,9 +27,11 @@
         android:hint="Search for your location..." />
         -->
 
-    <SearchView
+    <AutoCompleteTextView
+        android:id="@+id/atv_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:queryHint="Search for your location..."
