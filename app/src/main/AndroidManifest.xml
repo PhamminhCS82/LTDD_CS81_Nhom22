@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Weatherforecast">
+        <activity android:name=".ContactActivity"/>
+        <activity android:name=".AboutActivity"/>
         <activity android:name=".SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
