@@ -58,13 +58,19 @@ public class SearchActivity extends AppCompatActivity {
                 String c = autoCity.getText().toString();
                 String[] s = c.split(",");
                 Coord coord = dbAccess.getCoordByCityName(s[0]);
-                System.out.println(coord.getLon() + " " + coord.getLat());
 
                 //Tạo ra biến Intent để truyền lon và lat sangActiviy
+                /*Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                intent.putExtra("lat",coord.getLat());
+                intent.putExtra("lon", coord.getLon());
+                startActivityForResult(intent, MY_REQUEST_CODE);
+                finish();*/
+
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
                 intent.putExtra("lat",coord.getLat());
                 intent.putExtra("lon", coord.getLon());
-                startActivity(intent);
+                setResult(MainActivity.RECEIVE_CODE, intent);
+                finish();
             }
         });
     }

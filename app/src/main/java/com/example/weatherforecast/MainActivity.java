@@ -1,10 +1,12 @@
 package com.example.weatherforecast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.weatherforecast.common.Common;
@@ -22,54 +26,39 @@ import com.example.weatherforecast.retrofitclient.WeatherService;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.Random;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int SEND_CODE = 1;
+    public static final int RECEIVE_CODE = 2;
     LinearLayout addCity, layoutList;
     Toolbar toolbar;
-    TextView tvTemp, tvCity;
+    TextView tvCity, tvTemp;
     ImageView imgWeatherIcon;
     Button addLayout;
-
-    String lat = "33.44";
-    String lon = "-94.04";
+    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getView();
-        getWeatherInformation();
+
         setSupportActionBar(toolbar);
 
-        addCity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addCity.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
+                startActivityForResult(intent, SEND_CODE);
         });
 
-        addLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v = getLayoutInflater().inflate(R.layout.layout_add_city, null);
-
-                TextView nhietDo = (TextView) v.findViewById(R.id.nhietDo);
-                TextView thanhPho = (TextView) v.findViewById(R.id.thanhPho);
-                ImageView iconThoiTiet = (ImageView) v.findViewById(R.id.iconThoiTiet);
-
-                nhietDo.setText("160°");
-                thanhPho.setText("Hà Nội");
-                iconThoiTiet.setImageResource(R.drawable.rain);
-
-                layoutList.addView(v);
-            }
-        });
-
+        String latitude = "10.762622";
+        String longitutde = "106.660172";
+        generateDefaultLayout(latitude, longitutde, v);
     }
 
     public void getView() {
@@ -82,7 +71,25 @@ public class MainActivity extends AppCompatActivity {
         imgWeatherIcon = findViewById(R.id.img_weatherIcon);
     }
 
-    private void getWeatherInformation(){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == SEND_CODE) {
+            if(resultCode == RECEIVE_CODE) {
+                String lat = String.valueOf(data.getDoubleExtra("lat", 10.762622));
+                String lon = String.valueOf(data.getDoubleExtra("lon", 106.660172));
+                v = getLayoutInflater().inflate(R.layout.layout_add_city, null);
+                getWeatherInformation(lat, lon, v);
+            }
+        }
+    }
+
+    private void generateDefaultLayout(String lat, String lon, View v) {
+        v = getLayoutInflater().inflate(R.layout.layout_add_city, null);
+        getWeatherInformation(lat, lon, v);
+    }
+
+    private void getWeatherInformation(String lat, String lon, View view){
         Retrofit retrofit = RetrofitClient.getInstance();
         WeatherService weatherService = retrofit.create(WeatherService.class);
         Call<WeatherResponse> call = weatherService.getWeatherByLatLon(lat,lon,Common.API_KEY_ID,"metric");
@@ -93,12 +100,12 @@ public class MainActivity extends AppCompatActivity {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
                     double temp = weatherResponse.getMain().getTemp();
-                    String tempString = Double.toString(temp) + '°';
-                    tvTemp.setText(tempString);
-                    tvCity.setText(weatherResponse.getName());
-                    Picasso.get().load("http://openweathermap.org/img/wn/" +
+                    String temperatureString = Double.toString(temp) + '°';
+                    String cityName = weatherResponse.getName();
+                    String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
-                            "@2x.png").into(imgWeatherIcon);
+                            "@2x.png";
+                    generateLayout(view, temperatureString, cityName, path);
                 }
             }
 
@@ -129,5 +136,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void generateLayout(@Nullable View view, String temperatureString, String cityName, String path) {
+        view = getLayoutInflater().inflate(R.layout.layout_add_city, null);
+        TextView nhietDo = (TextView) view.findViewById(R.id.tv_temperature);
+        TextView thanhPho = (TextView) view.findViewById(R.id.tv_city);
+        ImageView iconThoiTiet = (ImageView) view.findViewById(R.id.img_weatherIcon);
+
+        nhietDo.setText(temperatureString);
+        thanhPho.setText(cityName);
+        Picasso.get().load(path).into(iconThoiTiet);
+        layoutList.addView(view);
     }
 }

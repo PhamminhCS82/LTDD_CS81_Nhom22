@@ -4,7 +4,7 @@
     android:layout_width="match_parent">
 
     <LinearLayout
-        android:id="@+id/test"
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:layout_marginLeft="20dp"
@@ -13,6 +13,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_added_city"
         android:elevation="10dp"
+        android:saveEnabled="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -20,34 +21,35 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="25dp"
             android:gravity="center_vertical"
+            android:saveEnabled="true"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nhietDo"
+                android:id="@+id/tv_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="start"
-                android:text="60°"
                 android:textColor="@color/white"
+                android:saveEnabled="true"
                 android:textSize="50sp" />
 
             <TextView
-                android:id="@+id/thanhPho"
+                android:id="@+id/tv_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Hồ Chí Minh"
                 android:textColor="@color/white"
+                android:saveEnabled="true"
                 android:textSize="25sp" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/iconThoiTiet"
+            android:id="@+id/img_weatherIcon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/night" />
+            android:saveEnabled="true"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
 </LinearLayout>
