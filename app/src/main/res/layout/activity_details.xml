@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".details"
+    tools:context=".DetailActivity"
     android:scrollbars="none">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#F9FEFC">
         <LinearLayout
@@ -22,22 +22,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:text="today"
+                android:layout_marginStart="10dp"
+                android:text="@string/today"
                 android:textSize="20sp"
                 />
             <TextView
+                android:id="@+id/txt_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Sai Gon"
+                android:layout_marginStart="10dp"
                 android:textSize="30sp"
+                android:textColor="@color/black"
                 />
             <TextView
+                android:id="@+id/tv_current_date_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="2020"
+                android:layout_marginStart="10dp"
                 android:textSize="16sp"
                 />
         </LinearLayout>
@@ -47,6 +48,8 @@
             android:layout_height="120dp"
             android:orientation="horizontal">
             <ImageView
+                android:contentDescription="@string/weather_description"
+                android:id="@+id/weather_icon"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -56,14 +59,16 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:background="@android:color/darker_gray"/>
+
             <TextView
+                android:id="@+id/tv_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="60dp"
-                android:text="19°"
-                android:layout_marginLeft="70dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:textSize="60sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -73,7 +78,7 @@
                 android:layout_height="100dp"
                 android:orientation="vertical"
                 android:layout_gravity="center"
-                android:layout_marginLeft="25dp">
+                android:layout_marginStart="25dp">
 
                 <ImageView
                     android:layout_width="80dp"
@@ -82,6 +87,7 @@
                     android:src="@drawable/wind_detail"
                     android:background="@drawable/img_wt_icon"/>
                 <TextView
+                    android:id="@+id/tv_current_wind_spd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="wind"
@@ -103,6 +109,7 @@
                     android:src="@drawable/cloud1_detail"
                     android:background="@drawable/img_wt_icon"/>
                 <TextView
+                    android:id="@+id/tv_current_clouds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="cloud"
@@ -120,13 +127,14 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/hot_detail"
+                    android:src="@drawable/humidity"
                     android:background="@drawable/img_wt_icon"/>
                 <TextView
+                    android:id="@+id/tv_current_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="hot"
+                    android:text="humidity"
                     android:textSize="18sp"
                     />
             </LinearLayout>
@@ -134,615 +142,143 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_forecast"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scrollbars="none">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-                    </LinearLayout>
+            android:layout_height="160dp"></androidx.recyclerview.widget.RecyclerView>
 
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"
-                            android:text="10:00"
-                            android:textSize="18dp" />
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:text="30"
-                            android:textSize="18dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="135dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/bg_add_city"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10:00"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="18dp"/>
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/cloudy_detail"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30"
-                            android:textSize="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-            </HorizontalScrollView>
-        </ScrollView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/nextdays_detail"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Next Days"
-                android:textSize="20dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"/>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
+                android:layout_marginBottom="30dp"
+                android:text="Next 7 Days"
+                android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Monday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
             <View
                 android:layout_width="350dp"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
+                android:background="#95a5a6" />
 
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:text="Tuesday"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
+            <ListView
+                android:id="@+id/lv_daily"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="Wednesday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="35dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Thusday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Friday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Satuday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="350dp"
-                android:layout_height="2dp"
-                android:layout_gravity="center"
-                android:background="#95a5a6"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sunday"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    />
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="45dp"
-                    android:background="@drawable/cloudy_detail"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="36/40"
-                    android:textSize="20sp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="80dp"
-                    />
-            </LinearLayout>
-
-
+                android:layout_height="640dp"
+                android:orientation="vertical"></ListView>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Comfort Level"/>
+            <com.ramijemli.percentagechartview.PercentageChartView
+                android:layout_gravity="center"
+                android:id="@+id/view_id"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:pcv_mode="ring"
+                app:pcv_backgroundBarColor="#C0C0C0"
+                app:pcv_gradientAngle="90"
+                app:pcv_gradientColors="#FC466B,#3F5EFB"
+                app:pcv_gradientType="linear"
+                app:pcv_textColor="@color/black"
+                app:pcv_orientation="clockwise"
+                app:pcv_textSize="40sp"
+                app:pcv_startAngle="90"
+                app:pcv_animDuration="800"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Humidity"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_feels_like"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:text="Feels like:"/>
+
+
+            <TextView
+                android:id="@+id/tv_uv"
+                android:layout_marginStart="130dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="UV Index:" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="#95a5a6" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Wind"/>
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/wind" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_wind_dir"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:text="Direction:"/>
+
+
+            <TextView
+                android:id="@+id/tv_wind_spd"
+                android:layout_marginStart="120dp"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Speed:" />
+        </LinearLayout>
     </LinearLayout>
-
-
-
-
 
 
 

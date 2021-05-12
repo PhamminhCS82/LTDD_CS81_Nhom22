@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Weatherforecast"
         android:usesCleartextTraffic="true">
-        <activity android:name=".details"></activity>
+        <activity android:name=".DetailActivity"></activity>
         <activity android:name=".SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

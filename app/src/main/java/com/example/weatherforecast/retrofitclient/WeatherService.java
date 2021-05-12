@@ -1,5 +1,6 @@
 package com.example.weatherforecast.retrofitclient;
 
+import com.example.weatherforecast.model.WeatherForecastResponse;
 import com.example.weatherforecast.model.WeatherResponse;
 
 import retrofit2.Call;
@@ -12,5 +13,11 @@ public interface WeatherService {
                                              @Query("lon") String lon,
                                              @Query("appid") String appId,
                                              @Query("units") String unit);
+    @GET("data/2.5/onecall?")
+    Call<WeatherForecastResponse> getWeatherForecastByLatLon(@Query("lat") String lat,
+                                                             @Query("lon") String lon,
+                                                             @Query("appid") String appId,
+                                                             @Query("exclude") String exclude,
+                                                             @Query("units") String unit);
 
 }
