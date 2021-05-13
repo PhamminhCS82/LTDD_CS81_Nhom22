@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,11 +31,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class DetailActivity extends AppCompatActivity {
-    String lat = "33.44";
-    String lon = "-94.04";
+    String nameCT = "Ho Chi Minh City",
+            lat = "10.762622",
+            lon = "106.660172";
     PercentageChartView percentageChartView;
     RecyclerView recyclerViewForecast;
-    TextView tvTemp, tvCity, tvDateTime, tvHumidity, tvClouds, tvWindSpd, tvUV, tvFeelsLike, tvWindDir, tvWindSpd2;
+    TextView tvTemp, tvCity, tvDateTime, tvHumidity,
+            tvClouds, tvWindSpd, tvUV, tvFeelsLike,
+            tvWindDir, tvWindSpd2, tvWthInf, tvTempDay, tvTempNight;
     ImageView imgView;
     ListView listView;
     WeatherForecastAdapter weatherForecastAdapter;
@@ -46,8 +51,15 @@ public class DetailActivity extends AppCompatActivity {
         recyclerViewForecast.setHasFixedSize(true);
         recyclerViewForecast.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerViewForecast.setAdapter(weatherForecastAdapter);
-
+        getCityNameAndLatLon();
         getWeatherInformation();
+    }
+
+    private void getCityNameAndLatLon() {
+        Intent intent = getIntent();
+        nameCT = intent.getStringExtra("cityName");
+        lat = String.valueOf(intent.getDoubleExtra("lat", 10.762622));
+        lon = String.valueOf(intent.getDoubleExtra("lon", 106.660172));
     }
 
     private void getView(){
@@ -65,6 +77,9 @@ public class DetailActivity extends AppCompatActivity {
         tvFeelsLike = findViewById(R.id.tv_feels_like);
         tvWindDir = findViewById(R.id.tv_wind_dir);
         tvWindSpd2 = findViewById(R.id.tv_wind_spd);
+        tvWthInf = findViewById(R.id.tv_weather_current_info);
+        tvTempDay = findViewById(R.id.tv_day_temp);
+        tvTempNight = findViewById(R.id.tv_night_temp);
         listView.setEnabled(false);
     }
 
@@ -82,35 +97,41 @@ public class DetailActivity extends AppCompatActivity {
                     recyclerViewForecast.setAdapter(weatherForecastAdapter);
                     dailyWeatherAdapter = new DailyWeatherAdapter(DetailActivity.this, weatherResponse);
                     listView.setAdapter(dailyWeatherAdapter);
-                    String cityName = weatherResponse.getTimezone();
-                    String temp = Math.round(weatherResponse.getCurrent().temp) + "°C";
-                    String hud = String.valueOf(weatherResponse.getCurrent().humidity) + '%';
-                    String clouds = String.valueOf(weatherResponse.getCurrent().clouds) + '%';
-                    String windSpd = weatherResponse.getCurrent().wind_speed + "m/s";
-                    String feel = "Feels like: " + Math.round(weatherResponse.getCurrent().feels_like) + "°C";
-                    String uv = "UV Index: " + Math.round(weatherResponse.getCurrent().uvi);
-                    String windDir = "Direction: " + Common.convertDegreeToCardinalDirection(weatherResponse.getCurrent().wind_deg);
-                    String windSpd2 = "Speed: " + Math.round(weatherResponse.getCurrent().wind_speed * 3.6) + " km/h";
-                    tvDateTime.setText(Common.convertUnixToDateTime(weatherResponse.getCurrent().dt));
+                    String cityName = nameCT;
+                    String temp = Math.round(weatherResponse.getCurrent().getTemp()) + "°C";
+                    String hud = String.valueOf(weatherResponse.getCurrent().getHumidity()) + '%';
+                    String clouds = String.valueOf(weatherResponse.getCurrent().getClouds()) + '%';
+                    String windSpd = weatherResponse.getCurrent().getWind_speed() + "m/s";
+                    String feel = "Feels like: " + Math.round(weatherResponse.getCurrent().getFeels_like()) + "°C";
+                    String uv = "UV Index: " + Math.round(weatherResponse.getCurrent().getUvi());
+                    String windDir = Common.convertDegreeToCardinalDirection(weatherResponse.getCurrent().getWind_deg());
+                    String windSpd2 = Math.round(weatherResponse.getCurrent().getWind_speed() * 3.6) + " km/h";
+                    String tempDay = Math.round(weatherResponse.getDaily().get(0).getTemp().getDay()) + "°C";
+                    String tempNight = Math.round(weatherResponse.getDaily().get(0).getTemp().getNight()) + "°C";
+                    String wthInfo = weatherResponse.getCurrent().getWeather().get(0).getDescription();
+                    tvDateTime.setText(Common.convertUnixToDateTime(weatherResponse.getCurrent().getDt()));
                     tvCity.setText(cityName);
                     tvTemp.setText(temp);
                     tvHumidity.setText(hud);
                     tvWindSpd.setText(windSpd);
-                    tvWindSpd2.setText(windSpd2);
-                    tvWindDir.setText(windDir);
+                    Common.appendColoredText(tvWindSpd2, windSpd2, Color.BLACK);
+                    Common.appendColoredText(tvWindDir, windDir, Color.BLACK);
+                    Common.appendColoredText(tvTempDay, tempDay, Color.BLACK);
+                    Common.appendColoredText(tvTempNight, tempNight, Color.BLACK);
+                    tvWthInf.setText(wthInfo);
                     tvClouds.setText(clouds);
                     tvFeelsLike.setText(feel);
                     tvUV.setText(uv);
-                    percentageChartView.setProgress(weatherResponse.getCurrent().humidity, true);
+                    percentageChartView.setProgress(weatherResponse.getCurrent().getHumidity(), true);
                     Picasso.get().load("http://openweathermap.org/img/wn/" +
-                            weatherResponse.getCurrent().weather.get(0).getIcon() +
+                            weatherResponse.getCurrent().getWeather().get(0).getIcon() +
                             "@2x.png").into(imgView);
 
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<WeatherForecastResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<WeatherForecastResponse> call, @NonNull Throwable t) {
                 System.out.println(t.getMessage());
             }
         });

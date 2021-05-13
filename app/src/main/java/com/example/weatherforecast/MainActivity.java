@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,11 +17,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.weatherforecast.common.Common;
+import com.example.weatherforecast.model.Coord;
 import com.example.weatherforecast.model.WeatherResponse;
 import com.example.weatherforecast.retrofitclient.RetrofitClient;
 import com.example.weatherforecast.retrofitclient.WeatherService;
@@ -30,7 +29,7 @@ import com.squareup.picasso.Picasso;
 
 
 
-import java.util.Random;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int SEND_CODE = 1;
     public static final int RECEIVE_CODE = 2;
-    LinearLayout addCity, layoutList, test;
+    LinearLayout addCity, layoutList;
     Toolbar toolbar;
     TextView tvCity, tvTemp;
     ImageView imgWeatherIcon;
@@ -65,14 +64,9 @@ public class MainActivity extends AppCompatActivity {
         String longitutde = "106.660172";
         generateDefaultLayout(latitude, longitutde, v);
     }
-        test.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-            startActivity(intent);
-        });
-    }
+
 
     public void getView() {
-        test = findViewById(R.id.test);
         addCity = findViewById(R.id.addCity);
         toolbar = findViewById(R.id.toolBar);
         addLayout = findViewById(R.id.add);
@@ -116,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
                             "@2x.png";
-                    generateLayout(view, temperatureString, cityName, path);
+                    generateLayout(view, temperatureString, cityName, path, weatherResponse.getCoord());
                 }
             }
 
@@ -150,15 +144,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generateLayout(@Nullable View view, String temperatureString, String cityName, String path) {
+    public void generateLayout(@Nullable View view, String temperatureString, String cityName, String path, Coord coord) {
         view = getLayoutInflater().inflate(R.layout.layout_add_city, null);
-        TextView nhietDo = (TextView) view.findViewById(R.id.tv_temperature);
-        TextView thanhPho = (TextView) view.findViewById(R.id.tv_city);
-        ImageView iconThoiTiet = (ImageView) view.findViewById(R.id.img_weatherIcon);
+        TextView nhietDo = view.findViewById(R.id.tv_temperature);
+        TextView thanhPho = view.findViewById(R.id.tv_city);
+        ImageView iconThoiTiet = view.findViewById(R.id.img_weatherIcon);
 
         nhietDo.setText(temperatureString);
         thanhPho.setText(cityName);
         Picasso.get().load(path).into(iconThoiTiet);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("cityName", cityName);
+                intent.putExtra("lon", coord.getLon());
+                intent.putExtra("lat", coord.getLat());
+                startActivity(intent);
+            }
+        });
         layoutList.addView(view);
     }
 }

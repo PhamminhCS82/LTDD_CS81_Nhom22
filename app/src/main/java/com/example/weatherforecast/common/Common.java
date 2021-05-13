@@ -1,6 +1,11 @@
 package com.example.weatherforecast.common;
 
 
+import android.annotation.SuppressLint;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,24 +15,21 @@ public class Common {
 
     public static String convertUnixToHour (int dt){
         Date date = new Date(dt*1000L);
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String formatted = sdf.format(date);
-        return formatted;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(date);
     }
     public static String convertUnixToDayOfWeek (int dt){
         Date date = new Date(dt*1000L);
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd");
-        String formatted = sdf.format(date);
-        return formatted;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd");
+        return sdf.format(date);
     }
     public static String convertUnixToDateTime (int dt){
         Date date = new Date(dt*1000L);
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, HH:mm");
-        String formatted = sdf.format(date);
-        return formatted;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, HH:mm");
+        return sdf.format(date);
     }
     public static String convertDegreeToCardinalDirection(int directionInDegrees){
-        String cardinalDirection = null;
+        String cardinalDirection;
         if( (directionInDegrees >= 348.75) && (directionInDegrees <= 360) ||
                 (directionInDegrees >= 0) && (directionInDegrees <= 11.25)    ){
             cardinalDirection = "North";
@@ -66,6 +68,14 @@ public class Common {
         }
 
         return cardinalDirection;
+    }
+    public static void appendColoredText(TextView tv, String text, int color) {
+        int start = tv.getText().length();
+        tv.append(text);
+        int end = tv.getText().length();
+
+        Spannable spannableText = (Spannable) tv.getText();
+        spannableText.setSpan(new ForegroundColorSpan(color), start, end, 0);
     }
 
 }

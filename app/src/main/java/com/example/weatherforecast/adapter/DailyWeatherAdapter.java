@@ -45,14 +45,14 @@ public class DailyWeatherAdapter extends BaseAdapter {
         TextView tempMin = convertView.findViewById(R.id.tv_temp_of_day_min);
         TextView tvWeatherInfo = convertView.findViewById(R.id.tv_weather_info);
 
-        int tMax = (int) Math.round(weatherForecastResponse.getDaily().get(position).temp.getMax());
-        int tMin = (int) Math.round(weatherForecastResponse.getDaily().get(position).temp.getMin());
-        day.setText(Common.convertUnixToDayOfWeek(weatherForecastResponse.getDaily().get(position).dt));
-        tvWeatherInfo.setText(weatherForecastResponse.getDaily().get(position).weather.get(0).getDescription());
+        int tMax = (int) Math.round(weatherForecastResponse.getDaily().get(position).getTemp().getMax());
+        int tMin = (int) Math.round(weatherForecastResponse.getDaily().get(position).getTemp().getMin());
+        day.setText(Common.convertUnixToDayOfWeek(weatherForecastResponse.getDaily().get(position).getDt()));
+        tvWeatherInfo.setText(weatherForecastResponse.getDaily().get(position).getWeather().get(0).getDescription());
         tempMax.setText(tMax + "°C");
         tempMin.setText(tMin + "°C");
         Picasso.get().load("http://openweathermap.org/img/wn/" +
-                weatherForecastResponse.getDaily().get(position).weather.get(0).getIcon() +
+                weatherForecastResponse.getDaily().get(position).getWeather().get(0).getIcon() +
                 "@2x.png").into(img);
         return convertView;
     }
