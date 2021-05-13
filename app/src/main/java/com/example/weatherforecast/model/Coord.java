@@ -31,4 +31,5 @@ public class Coord {
     public void setLat(double lat) {
         this.lat = lat;
     }
+
 }

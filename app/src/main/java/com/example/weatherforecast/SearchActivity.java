@@ -1,29 +1,23 @@
 package com.example.weatherforecast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import android.content.Intent;
 import android.os.Bundle;
 
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.example.weatherforecast.databasehelper.DBAccess;
 import com.example.weatherforecast.model.City;
 import com.example.weatherforecast.model.Coord;
 
 import java.util.ArrayList;
-
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -47,10 +41,10 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String c = autoCity.getText().toString();
-                    dataArr = dbAccess.getCityList(c);
-                    newsAdapter = new ArrayAdapter<City>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line, dataArr);
-                    autoCity.setAdapter(newsAdapter);
+                String c = autoCity.getText().toString();
+                dataArr = dbAccess.getCityList(c);
+                newsAdapter = new ArrayAdapter<City>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line, dataArr);
+                autoCity.setAdapter(newsAdapter);
             }
 
             @Override
@@ -64,7 +58,19 @@ public class SearchActivity extends AppCompatActivity {
                 String c = autoCity.getText().toString();
                 String[] s = c.split(",");
                 Coord coord = dbAccess.getCoordByCityName(s[0]);
-                System.out.println(coord.getLon() + " " + coord.getLat());
+
+                //Tạo ra biến Intent để truyền lon và lat sangActiviy
+                /*Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                intent.putExtra("lat",coord.getLat());
+                intent.putExtra("lon", coord.getLon());
+                startActivityForResult(intent, MY_REQUEST_CODE);
+                finish();*/
+
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                intent.putExtra("lat",coord.getLat());
+                intent.putExtra("lon", coord.getLon());
+                setResult(MainActivity.RECEIVE_CODE, intent);
+                finish();
             }
         });
     }
