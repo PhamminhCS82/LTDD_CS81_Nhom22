@@ -11,6 +11,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvCity, tvTemp;
     ImageView imgWeatherIcon;
     Button addLayout;
+    Boolean kiemTra = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         addCity.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivityForResult(intent, SEND_CODE);
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivityForResult(intent, SEND_CODE);
         });
 
         String latitude = "10.762622";
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RECEIVE_CODE) {
                 String lat = String.valueOf(data.getDoubleExtra("lat", 10.762622));
                 String lon = String.valueOf(data.getDoubleExtra("lon", 106.660172));
+                kiemTra = false;
                 getWeatherInformation(lat, lon);
             }
         }
@@ -142,19 +145,21 @@ public class MainActivity extends AppCompatActivity {
         TextView thanhPho = (TextView) view.findViewById(R.id.tv_city);
         ImageView iconThoiTiet = (ImageView) view.findViewById(R.id.img_weatherIcon);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.layout);
-        ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
 
         nhietDo.setText(temperatureString);
         thanhPho.setText(cityName);
         Picasso.get().load(path).into(iconThoiTiet);
 
-        layout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                layoutList.removeView(view);
-                return false;
-            }
-        });
+        if(kiemTra == false) {
+            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
+                    delete.setImageResource(R.drawable.remove);
+                    return true;
+                }
+            });
+        }
 
         layoutList.addView(view);
     }
