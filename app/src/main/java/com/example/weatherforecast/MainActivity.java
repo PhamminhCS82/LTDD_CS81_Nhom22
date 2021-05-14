@@ -21,6 +21,7 @@ import android.widget.Button;
 
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgWeatherIcon;
     Button addLayout;
     Boolean kiemTra = true;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         getView();
 
         setSupportActionBar(toolbar);
+
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.setFocusable(true);
+                scrollView.setFocusableInTouchMode(true);
+                scrollView.requestFocus();
+                return false;
+            }
+        });
 
         addCity.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
@@ -72,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getView() {
+        scrollView = findViewById(R.id.scr_view);
         addCity = findViewById(R.id.addCity);
         toolbar = findViewById(R.id.toolBar);
         addLayout = findViewById(R.id.add);
@@ -114,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
                             "@2x.png";
-                    generateLayout(view, temperatureString, cityName, path, weatherResponse.getCoord());
+                    generateLayout(temperatureString, cityName, path, weatherResponse.getCoord());
 
                 }
             }
@@ -156,7 +169,12 @@ public class MainActivity extends AppCompatActivity {
         TextView thanhPho = view.findViewById(R.id.tv_city);
         ImageView iconThoiTiet = view.findViewById(R.id.img_weatherIcon);
         LinearLayout layout = view.findViewById(R.id.layout);
-
+        ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
+        delete.setImageResource(R.drawable.remove);
+        delete.setVisibility(View.INVISIBLE);
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
 
         nhietDo.setText(temperatureString);
         thanhPho.setText(cityName);
@@ -173,13 +191,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(kiemTra == false) {
-            layout.setOnLongClickListener(new View.OnLongClickListener() {
+        if(!kiemTra) {
+            view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
-                    delete.setImageResource(R.drawable.remove);
+                    delete.setVisibility(View.VISIBLE);
                     return true;
+                }
+            });
+            view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(!hasFocus)
+                        delete.setVisibility(View.INVISIBLE);
+                }
+            });
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(v != delete)
+                        delete.setVisibility(View.INVISIBLE);
+                    else
+                        layoutList.removeView(view);
                 }
             });
         }
