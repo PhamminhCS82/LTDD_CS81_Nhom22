@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.weatherforecast.databasehelper.DBAccess;
 import com.example.weatherforecast.model.City;
@@ -58,6 +59,18 @@ public class SearchActivity extends AppCompatActivity {
                 String c = autoCity.getText().toString();
                 String[] s = c.split(",");
                 Coord coord = dbAccess.getCoordByCityName(s[0]);
+                boolean save = dbAccess.saveLayoutData(String.valueOf(coord.getLat()), String.valueOf(coord.getLon()));
+                if(save)
+                {
+                    Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                    intent.putExtra("lat",coord.getLat());
+                    intent.putExtra("lon", coord.getLon());
+                    dbAccess.close();
+                    setResult(MainActivity.RECEIVE_CODE, intent);
+                    finish();
+                }
+                else
+                    Toast.makeText(SearchActivity.this, "Đã chọn trùng thành phố rồi!!!", Toast.LENGTH_LONG);
 
                 //Tạo ra biến Intent để truyền lon và lat sangActiviy
                 /*Intent intent = new Intent(SearchActivity.this, MainActivity.class);
@@ -66,11 +79,7 @@ public class SearchActivity extends AppCompatActivity {
                 startActivityForResult(intent, MY_REQUEST_CODE);
                 finish();*/
 
-                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-                intent.putExtra("lat",coord.getLat());
-                intent.putExtra("lon", coord.getLon());
-                setResult(MainActivity.RECEIVE_CODE, intent);
-                finish();
+
             }
         });
     }

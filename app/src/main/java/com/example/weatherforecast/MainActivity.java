@@ -9,12 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
-import android.os.PersistableBundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +25,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.weatherforecast.common.Common;
+import com.example.weatherforecast.databasehelper.DBAccess;
 import com.example.weatherforecast.model.Coord;
 import com.example.weatherforecast.model.WeatherResponse;
 import com.example.weatherforecast.retrofitclient.RetrofitClient;
@@ -34,8 +33,7 @@ import com.example.weatherforecast.retrofitclient.WeatherService;
 import com.squareup.picasso.Picasso;
 
 
-
-
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,35 +51,48 @@ public class MainActivity extends AppCompatActivity {
     Button addLayout;
     Boolean kiemTra = true;
     ScrollView scrollView;
-
+    View views;
+    ArrayList<Coord> arrayList;
+    DBAccess dbAccess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getView();
-
+        dbAccess = DBAccess.getInstance(getApplicationContext());
+        arrayList = new ArrayList<>();
         setSupportActionBar(toolbar);
 
-        scrollView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                scrollView.setFocusable(true);
-                scrollView.setFocusableInTouchMode(true);
-                scrollView.requestFocus();
-                return false;
-            }
-        });
-
+        generateDefaultLayout();
         addCity.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivityForResult(intent, SEND_CODE);
         });
 
-        String latitude = "10.762622";
-        String longitutde = "106.660172";
-        generateDefaultLayout(latitude, longitutde);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.floating_menu, menu);
+        views = v;
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.del:
+                dbAccess.open();
+                Coord c = arrayList.get((int)views.getTag() - 1);
+
+                boolean a = dbAccess.deleteCityFavorite(String.valueOf(c.getLat()), String.valueOf(c.getLon()));
+                System.out.println(views.getTag().toString() + a);
+                layoutList.removeView(views);
+                dbAccess.close();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
 
     public void getView() {
         scrollView = findViewById(R.id.scr_view);
@@ -101,15 +112,19 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RECEIVE_CODE) {
                 String lat = String.valueOf(data.getDoubleExtra("lat", 10.762622));
                 String lon = String.valueOf(data.getDoubleExtra("lon", 106.660172));
-                kiemTra = false;
                 getWeatherInformation(lat, lon);
             }
         }
     }
 
-    private void generateDefaultLayout(String lat, String lon) {
-        getWeatherInformation(lat, lon);
+    private void generateDefaultLayout() {
+        dbAccess.open();
+        ArrayList<Coord> c = dbAccess.getCoordFromSaveTable();
+        for(int i = 0; i < c.size(); i++)
+            getWeatherInformation(String.valueOf(c.get(i).getLat()),String.valueOf(c.get(i).getLon()));
+        dbAccess.close();
     }
+
 
     private void getWeatherInformation(String lat, String lon){
         Retrofit retrofit = RetrofitClient.getInstance();
@@ -127,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
                     String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
                             "@2x.png";
-                    generateLayout(temperatureString, cityName, path, weatherResponse.getCoord());
+                    Coord coo = new Coord(Double.valueOf(lon), Double.valueOf(lat));
+                    generateLayout(temperatureString, cityName, path, coo);
 
                 }
             }
@@ -169,13 +185,9 @@ public class MainActivity extends AppCompatActivity {
         TextView thanhPho = view.findViewById(R.id.tv_city);
         ImageView iconThoiTiet = view.findViewById(R.id.img_weatherIcon);
         LinearLayout layout = view.findViewById(R.id.layout);
-        ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
-        delete.setImageResource(R.drawable.remove);
-        delete.setVisibility(View.INVISIBLE);
-        view.setFocusable(true);
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-
+        arrayList.add(coord);
+        if(!kiemTra)
+            registerForContextMenu(view);
         nhietDo.setText(temperatureString);
         thanhPho.setText(cityName);
         Picasso.get().load(path).into(iconThoiTiet);
@@ -190,33 +202,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        if(!kiemTra) {
-            view.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    delete.setVisibility(View.VISIBLE);
-                    return true;
-                }
-            });
-            view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if(!hasFocus)
-                        delete.setVisibility(View.INVISIBLE);
-                }
-            });
-            delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(v != delete)
-                        delete.setVisibility(View.INVISIBLE);
-                    else
-                        layoutList.removeView(view);
-                }
-            });
-        }
-
+        kiemTra = false;
+        view.setTag(arrayList.size());
         layoutList.addView(view);
     }
 }
