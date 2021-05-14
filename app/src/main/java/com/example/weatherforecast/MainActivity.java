@@ -7,9 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+
+import android.os.PersistableBundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvCity, tvTemp;
     ImageView imgWeatherIcon;
     Button addLayout;
-    View v;
+    Boolean kiemTra = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         addCity.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivityForResult(intent, SEND_CODE);
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivityForResult(intent, SEND_CODE);
         });
 
         String latitude = "10.762622";
         String longitutde = "106.660172";
-        generateDefaultLayout(latitude, longitutde, v);
+        generateDefaultLayout(latitude, longitutde);
     }
 
 
@@ -83,18 +88,17 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RECEIVE_CODE) {
                 String lat = String.valueOf(data.getDoubleExtra("lat", 10.762622));
                 String lon = String.valueOf(data.getDoubleExtra("lon", 106.660172));
-                v = getLayoutInflater().inflate(R.layout.layout_add_city, null);
-                getWeatherInformation(lat, lon, v);
+                kiemTra = false;
+                getWeatherInformation(lat, lon);
             }
         }
     }
 
-    private void generateDefaultLayout(String lat, String lon, View v) {
-        v = getLayoutInflater().inflate(R.layout.layout_add_city, null);
-        getWeatherInformation(lat, lon, v);
+    private void generateDefaultLayout(String lat, String lon) {
+        getWeatherInformation(lat, lon);
     }
 
-    private void getWeatherInformation(String lat, String lon, View view){
+    private void getWeatherInformation(String lat, String lon){
         Retrofit retrofit = RetrofitClient.getInstance();
         WeatherService weatherService = retrofit.create(WeatherService.class);
         Call<WeatherResponse> call = weatherService.getWeatherByLatLon(lat,lon,Common.API_KEY_ID,"metric");
@@ -111,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                             weatherResponse.getWeather().get(0).getIcon() +
                             "@2x.png";
                     generateLayout(view, temperatureString, cityName, path, weatherResponse.getCoord());
+
                 }
             }
 
@@ -144,15 +149,19 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void generateLayout(@Nullable View view, String temperatureString, String cityName, String path, Coord coord) {
-        view = getLayoutInflater().inflate(R.layout.layout_add_city, null);
+
+    public void generateLayout(String temperatureString, String cityName, String path, Coord coord) {
+        final View view = getLayoutInflater().inflate(R.layout.layout_add_city, null);
         TextView nhietDo = view.findViewById(R.id.tv_temperature);
         TextView thanhPho = view.findViewById(R.id.tv_city);
         ImageView iconThoiTiet = view.findViewById(R.id.img_weatherIcon);
+        LinearLayout layout = view.findViewById(R.id.layout);
+
 
         nhietDo.setText(temperatureString);
         thanhPho.setText(cityName);
         Picasso.get().load(path).into(iconThoiTiet);
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +172,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if(kiemTra == false) {
+            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    ImageView delete = (ImageView) view.findViewById(R.id.img_delete);
+                    delete.setImageResource(R.drawable.remove);
+                    return true;
+                }
+            });
+        }
+
         layoutList.addView(view);
     }
 }
