@@ -89,7 +89,7 @@
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:text=""
-                    android:textSize="60sp" />
+                    android:textSize="54sp" />
                 <TextView
                     android:id="@+id/tv_night_temp"
                     android:layout_width="wrap_content"
