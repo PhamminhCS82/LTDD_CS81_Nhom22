@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
                     double temp = weatherResponse.getMain().getTemp();
-                    String temperatureString = Double.toString(temp) + '°';
+                    String temperatureString = Double.toString(temp) + "°C";
                     String cityName = weatherResponse.getName();
                     String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
