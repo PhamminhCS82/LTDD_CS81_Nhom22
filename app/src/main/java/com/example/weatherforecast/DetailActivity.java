@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -48,13 +51,17 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
-        getView();
-        recyclerViewForecast.setHasFixedSize(true);
-        recyclerViewForecast.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL,false));
-        recyclerViewForecast.setAdapter(weatherForecastAdapter);
-        getCityNameAndLatLon();
-        getWeatherInformation();
+        if(!isOnline()) {
+            setContentView(R.layout.activity_disconnect);
+        } else {
+            setContentView(R.layout.activity_details);
+            getView();
+            recyclerViewForecast.setHasFixedSize(true);
+            recyclerViewForecast.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL,false));
+            recyclerViewForecast.setAdapter(weatherForecastAdapter);
+            getCityNameAndLatLon();
+            getWeatherInformation();
+        }
     }
 
     private void getCityNameAndLatLon() {
@@ -151,5 +158,11 @@ public class DetailActivity extends AppCompatActivity {
                 System.out.println(t.getMessage());
             }
         });
+    }
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 }

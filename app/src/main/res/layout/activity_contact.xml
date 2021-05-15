@@ -35,10 +35,10 @@
             android:background="@drawable/bg_member">
 
             <ImageView
-                android:layout_width="300dp"
+                android:layout_width="315dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="17dp"
                 android:src="@drawable/minh"/>
 
             <TextView
@@ -76,7 +76,7 @@
                 android:text="Liên hệ"
                 android:textSize="20sp"
                 android:textAllCaps="false"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
@@ -93,10 +93,11 @@
             android:background="@drawable/bg_member">
 
             <ImageView
-                android:layout_width="300dp"
+                android:layout_width="315dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="17dp"
+                android:scaleType="center"
                 android:src="@drawable/kiet"/>
 
             <TextView
@@ -134,7 +135,7 @@
                 android:text="Liên hệ"
                 android:textSize="20sp"
                 android:textAllCaps="false"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
@@ -152,10 +153,12 @@
             android:layout_marginBottom="20dp">
 
             <ImageView
-                android:layout_width="300dp"
+                android:layout_width="315dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="17dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 android:src="@drawable/nhat"/>
 
             <TextView
@@ -193,7 +196,7 @@
                 android:text="Liên hệ"
                 android:textSize="20sp"
                 android:textAllCaps="false"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>

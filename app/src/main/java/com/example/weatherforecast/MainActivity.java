@@ -6,8 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 
@@ -70,21 +73,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getView();
-        dbAccess = DBAccess.getInstance(getApplicationContext());
-        arrayList = new ArrayList<>();
-        setSupportActionBar(toolbar);
+        if(!isOnline()){
+            setContentView(R.layout.activity_disconnect);
+        } else {
+            setContentView(R.layout.activity_main);
+            getView();
+            dbAccess = DBAccess.getInstance(getApplicationContext());
+            arrayList = new ArrayList<>();
+            setSupportActionBar(toolbar);
 
 
-        getLocation();
-        getWeatherDefaultInfo(Common.latitude, Common.longitude);
-        generateDefaultLayout();
-        addCity.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-            startActivityForResult(intent, SEND_CODE);
-        });
-
+            getLocation();
+            getWeatherDefaultInfo(Common.latitude, Common.longitude);
+            generateDefaultLayout();
+            addCity.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivityForResult(intent, SEND_CODE);
+            });
+        }
     }
 
 
@@ -210,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;
                     double temp = weatherResponse.getMain().getTemp();
-                    String temperatureString = Double.toString(temp) + '°';
+                    String temperatureString = Double.toString(temp) + "°C";
                     String cityName = weatherResponse.getName();
                     String path = "http://openweathermap.org/img/wn/" +
                             weatherResponse.getWeather().get(0).getIcon() +
@@ -312,5 +318,11 @@ public class MainActivity extends AppCompatActivity {
         });
         view.setTag(arrayList.size());
         layoutList.addView(view);
+    }
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 }
