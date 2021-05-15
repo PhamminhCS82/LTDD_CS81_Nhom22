@@ -39,10 +39,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_weather_daily.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_weather_daily.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
     <property name="android-custom-viewC:/Users/pminh/AppData/Local/Android/Sdk/sources/android-30/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
     <property name="android-custom-viewC:/Users/pminh/AppData/Local/Android/Sdk/sources/android-30/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Project_java/weatherforecast" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -91,14 +88,15 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Projects\Mobile_Programming\weatherforecast\app\src\main\res\drawable-v24" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.weatherforecast.model" />
     </key>
     <key name="android.template.2075802309">
       <recent name="com.example.weatherforecast" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.weatherforecast.model" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\Mobile_Programming\LTDD_CS81_Nhom22\app\src\main\res\drawable-v24" />
+      <recent name="E:\Projects\Mobile_Programming\weatherforecast\app\src\main\res\drawable-v24" />
     </key>
   </component>
   <component name="RunManager">
@@ -245,10 +243,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="167" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1619954595790" />
-    <state x="349" y="167" key="AndroidCreateResourceFileDialog" timestamp="1621003130911">
+    <state x="349" y="167" key="AndroidCreateResourceFileDialog" timestamp="1621074098619">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1621003130911" />
+    <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1621074098619" />
     <state x="349" y="175" key="AndroidCreateResourceFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1620845853556" />
     <state x="617" y="162" key="AndroidProcessChooserDialog" timestamp="1620134887493">
       <screen x="0" y="0" width="1536" height="864" />
@@ -298,10 +296,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621001151677" />
-    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1617193484969">
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621073892301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1617193484969" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621073892301" />
     <state x="445" y="156" key="psd.add.library.dependency.panel.dimension" timestamp="1620198142091">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         thanhPho.setText(cityName);
         Picasso.get().load(path).into(iconThoiTiet);
 
-        layout.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
