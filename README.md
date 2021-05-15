@@ -1,6 +1,6 @@
 # LTDD_CS81_Nhom22
 Ứng dụng dự báo thời tiết trên thiết bị android
-###Mô tả kĩ thuật
+### Mô tả kĩ thuật
 -Ứng dụng được thiết kế giao diện tham khảo từ nhiều nguồn tìm kiếm trên google
 -Ứng dụng được viết bằng ngôn ngữ Java
 -Để có thể hiển thị lên thông tin về thời tiết trong ngày và 7 ngày tiếp theo ứng dụng đã sử dụng API từ https://openweathermap.org/
@@ -11,7 +11,7 @@
 -Ứng dụng còn sử dụng thêm 1 vài dependency khác để hiển thị giao diện
 -Ứng dụng vẫn sẽ còn tồn đọng nhiều lỗi chưa giải quyết.
 
-###Hướng dẫn sử dụng
+### Hướng dẫn sử dụng
 -Cần kết nối INTERNET để có thể sử dụng ứng dụng
 -Ứng dụng có thể xem được thời tiết trong 7 ngày tiếp theo và thời tiết trong 48 giờ tiếp theo
 -Mặc định ban đầu ứng dụng sẽ lấy thông tin thời tiết từ Thành Phố Hồ Chí Minh
@@ -22,8 +22,8 @@
 
 
 
-###Thành viên thực hiện
+###T hành viên thực hiện
 **1. Phạm Quang Minh:** Thực hiện xử lý dữ liệu, hiển thị dữ liệu lên giao diện, sửa lỗi
 **2. Tất Quảng Kiệt:** Thiết kế giao diện phần MainActivity và xử lý việc thêm layout, lấy dữ liệu được nhập từ người dùng.
 **3. Lê Công Nhật:** Thiết kế giao diện phần Detail, chi tiết thời tiết của khu vực người dùng chọn
->Thông tin chi tiết trong file word đính kèm
+> Thông tin chi tiết trong file word đính kèm
