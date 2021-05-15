@@ -25,7 +25,7 @@
 ### Thành viên thực hiện
 Bao gồm:
 
-1. **Phạm Quang Minh: ** Thực hiện xử lý dữ liệu, hiển thị dữ liệu lên giao diện, sửa lỗi
+1. **Phạm Quang Minh:** Thực hiện xử lý dữ liệu, hiển thị dữ liệu lên giao diện, sửa lỗi
 2. **Tất Quảng Kiệt:** Thiết kế giao diện phần MainActivity và xử lý việc thêm layout, lấy dữ liệu được nhập từ người dùng.
 3. **Lê Công Nhật:** Thiết kế giao diện phần Detail, chi tiết thời tiết của khu vực người dùng chọn
 > Thông tin chi tiết trong file word đính kèm
