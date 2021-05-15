@@ -54,6 +54,8 @@ public class DBAccess {
     }
     //Lấy danh sách thành phố
     public ArrayList<City> getCityList(String name){
+        if(name.contains("\'"))
+            name = name.replace("\'", "\'\'" );
         cursor = database.rawQuery("select name, country from city where name match '%" + name + "%'", new String[]{});
         ArrayList<City> ct = new ArrayList<>();
         while(cursor.moveToNext()) {
@@ -64,6 +66,8 @@ public class DBAccess {
     }
     //Lấy tọa độ theo tên thành phố
     public Coord getCoordByCityName(String name){
+        if(name.contains("\'"))
+            name = name.replace("\'", "\'\'" );
         cursor = database.rawQuery("select [coord.lon], [coord.lat] from city where name match '" + name + "'", null);
         Coord coord = new Coord();
         while(cursor.moveToNext())
