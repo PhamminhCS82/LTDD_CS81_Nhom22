@@ -18,6 +18,7 @@ public interface WeatherService {
                                                              @Query("lon") String lon,
                                                              @Query("appid") String appId,
                                                              @Query("exclude") String exclude,
+                                                             @Query("lang") String lang,
                                                              @Query("units") String unit);
 
 }

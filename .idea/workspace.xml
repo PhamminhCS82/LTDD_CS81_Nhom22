@@ -37,19 +37,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/databases/CityFTS.db" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/databases/CityFTS.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/DetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/DetailActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/SearchActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/common/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/common/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/databasehelper/DBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/databasehelper/DBAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/databasehelper/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/databasehelper/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/retrofitclient/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weatherforecast/retrofitclient/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\pminh\.android\avd\Pixel_3a_API_30_x86.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@PDAGAA48A1916067]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -220,11 +225,11 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="525" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1621016720231" />
-    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1621027911821">
+    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1621068830162">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1619586134446" />
-    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1621027911821" />
+    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1621068830162" />
     <state x="499" y="149" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1620155039482">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -267,26 +272,26 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="567" y="167" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1621019218641" />
-    <state width="746" height="326" key="GridCell.Tab.0.bottom" timestamp="1621033974818">
+    <state width="746" height="326" key="GridCell.Tab.0.bottom" timestamp="1621073058485">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="168" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619963913099" />
-    <state width="746" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621033974818" />
-    <state width="746" height="326" key="GridCell.Tab.0.center" timestamp="1621033974818">
+    <state width="746" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621073058485" />
+    <state width="746" height="326" key="GridCell.Tab.0.center" timestamp="1621073058485">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="168" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1619963913099" />
-    <state width="746" height="326" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1621033974818" />
-    <state width="746" height="326" key="GridCell.Tab.0.left" timestamp="1621033974818">
+    <state width="746" height="326" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1621073058485" />
+    <state width="746" height="326" key="GridCell.Tab.0.left" timestamp="1621073058485">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="168" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1619963913099" />
-    <state width="746" height="326" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1621033974818" />
-    <state width="746" height="326" key="GridCell.Tab.0.right" timestamp="1621033974818">
+    <state width="746" height="326" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1621073058485" />
+    <state width="746" height="326" key="GridCell.Tab.0.right" timestamp="1621073058485">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="168" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1619963913099" />
-    <state width="746" height="326" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1621033974818" />
+    <state width="746" height="326" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1621073058485" />
     <state width="1493" height="325" key="GridCell.Tab.1.bottom" timestamp="1620802275874">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -315,6 +320,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="445" y="156" key="psd.add.library.dependency.panel.dimension/0.0.1536.864@0.0.1536.864" timestamp="1620198142091" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1621062306678">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1621062306678" />
     <state x="450" y="175" width="672" height="678" key="search.everywhere.popup" timestamp="1621028998659">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

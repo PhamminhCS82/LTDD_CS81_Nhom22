@@ -26,6 +26,58 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
+
+        <LinearLayout
+            android:id="@+id/layoutDefault"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_added_city"
+            android:elevation="10dp"
+            android:saveEnabled="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="235dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical"
+                android:saveEnabled="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_temperatureDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:gravity="start"
+                    android:textColor="@color/white"
+                    android:saveEnabled="true"
+                    android:textSize="52sp" />
+
+                <TextView
+                    android:id="@+id/tv_cityDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/white"
+                    android:saveEnabled="true"
+                    android:textSize="23sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img_weatherDefault"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:saveEnabled="true"
+                android:layout_gravity="center_vertical"/>
+
+
+
+        </LinearLayout>
         <!--Dùng Java tạo ra-->
         <LinearLayout
             android:id="@+id/layout_container"

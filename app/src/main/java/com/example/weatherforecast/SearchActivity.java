@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
-    TextView tvTest;
     AutoCompleteTextView autoCity;
     ArrayList<City> dataArr = new ArrayList<>();
     ArrayAdapter<City> newsAdapter;

@@ -41,7 +41,7 @@ public class DBAccess {
         ContentValues values = new ContentValues();
         values.put("lon", lon);
         values.put("lat", lat);
-        cursor = database.rawQuery("Select * from save_favorite_city where lon = '" + lon + "' and lat = '" + lat + "'", new String[]{});
+        cursor = database.rawQuery("Select * from save_favorite_city where lon = ? and lat = ?", new String[]{lon,lat});
         if(cursor.getCount() > 0) {
             return false;
         } else{
@@ -71,7 +71,7 @@ public class DBAccess {
         return coord;
     }
     public ArrayList<Coord> getCoordFromSaveTable() {
-        cursor = database.rawQuery("select * from save_favorite_city ORDER BY id", null);
+        cursor = database.rawQuery("select * from save_favorite_city EXCEPT select * from save_favorite_city where id = 1", null);
         Coord coord;
         ArrayList<Coord> coords = new ArrayList<>();
         while (cursor.moveToNext()){
@@ -95,4 +95,5 @@ public class DBAccess {
             return false;
         }
     }
+
 }
