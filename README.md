@@ -12,13 +12,13 @@
 -Ứng dụng vẫn sẽ còn tồn đọng nhiều lỗi chưa giải quyết.
 
 ### Hướng dẫn sử dụng
--Cần kết nối INTERNET để có thể sử dụng ứng dụng
--Ứng dụng có thể xem được thời tiết trong 7 ngày tiếp theo và thời tiết trong 48 giờ tiếp theo
--Mặc định ban đầu ứng dụng sẽ lấy thông tin thời tiết từ Thành Phố Hồ Chí Minh
--Có thể thêm các thành phố khác bằng việc nhấn chọn **add city** trên màn hình
--Nhập tên thành phố mà bạn muốn biết thông tin và thành phố sẽ được thêm vào màn hình của ứng dụng
--Chọn thành phố mà bạn muốn xem chi tiết và thông tin chi tiết thời tiết của thành phố sẽ xuất hiện
--Để xóa thành phố bạn thêm vào hãy nhấn giữ chọn thành phố và chọn delete.
+* Cần kết nối INTERNET để có thể sử dụng ứng dụng
+* Ứng dụng có thể xem được thời tiết trong 7 ngày tiếp theo và thời tiết trong 48 giờ tiếp theo
+*Mặc định ban đầu ứng dụng sẽ lấy thông tin thời tiết từ Thành Phố Hồ Chí Minh
+*Có thể thêm các thành phố khác bằng việc nhấn chọn **add city** trên màn hình
+*Nhập tên thành phố mà bạn muốn biết thông tin và thành phố sẽ được thêm vào màn hình của ứng dụng
+*Chọn thành phố mà bạn muốn xem chi tiết và thông tin chi tiết thời tiết của thành phố sẽ xuất hiện
+*Để xóa thành phố bạn thêm vào hãy nhấn giữ chọn thành phố và chọn delete.
 
 
 
