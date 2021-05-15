@@ -2,6 +2,7 @@ package com.example.weatherforecast.common;
 
 
 import android.annotation.SuppressLint;
+import android.location.Location;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
@@ -11,7 +12,8 @@ import java.util.Date;
 
 public class Common {
     public static final String API_KEY_ID = "539dc4a140721a4a777e096808c391fa";
-    //public static Location current_location = null;
+    public static String latitude = "10.762622", longitude = "106.660172";
+    public static Location current_location = null;
 
     public static String convertUnixToHour (int dt){
         Date date = new Date(dt*1000L);

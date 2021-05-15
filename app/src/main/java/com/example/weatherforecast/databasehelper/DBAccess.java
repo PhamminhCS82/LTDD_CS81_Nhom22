@@ -1,5 +1,6 @@
 package com.example.weatherforecast.databasehelper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,6 +36,22 @@ public class DBAccess {
             this.database.close();
         }
     }
+
+    public boolean saveLayoutData(String lat, String lon){
+        ContentValues values = new ContentValues();
+        values.put("lon", lon);
+        values.put("lat", lat);
+        cursor = database.rawQuery("Select * from save_favorite_city where lon = ? and lat = ?", new String[]{lon,lat});
+        if(cursor.getCount() > 0) {
+            return false;
+        } else{
+            long result = database.insert("save_favorite_city", null, values);
+            if(result == -1)
+                return false;
+            else
+                return true;
+        }
+    }
     //Lấy danh sách thành phố
     public ArrayList<City> getCityList(String name){
         cursor = database.rawQuery("select name, country from city where name match '%" + name + "%'", new String[]{});
@@ -53,4 +70,30 @@ public class DBAccess {
             coord = new Coord(cursor.getDouble(0), cursor.getDouble(1));
         return coord;
     }
+    public ArrayList<Coord> getCoordFromSaveTable() {
+        cursor = database.rawQuery("select * from save_favorite_city EXCEPT select * from save_favorite_city where id = 1", null);
+        Coord coord;
+        ArrayList<Coord> coords = new ArrayList<>();
+        while (cursor.moveToNext()){
+            coord = new Coord(Double.parseDouble(cursor.getString(1)), Double.parseDouble(cursor.getString(2)));
+            coords.add(coord);
+        }
+        return coords;
+    }
+    public boolean deleteCityFavorite(String lat, String lon){
+
+        cursor = database.rawQuery("select * from save_favorite_city", null);
+        if(cursor.moveToNext()) {
+            long result = database.delete("save_favorite_city", "lon =? and lat =?", new String[]{lon, lat});
+            if (result == -1) {
+                return false;
+            } else {
+
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
 }

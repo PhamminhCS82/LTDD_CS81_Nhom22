@@ -25,6 +25,8 @@ import com.ramijemli.percentagechartview.PercentageChartView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,7 +88,21 @@ public class DetailActivity extends AppCompatActivity {
     private void getWeatherInformation() {
         Retrofit retrofit = RetrofitClient.getInstance();
         WeatherService weatherService = retrofit.create(WeatherService.class);
-        Call<WeatherForecastResponse> call = weatherService.getWeatherForecastByLatLon(lat,lon, Common.API_KEY_ID, "minutely,alerts","metric");
+        Locale currentLocale = Locale.getDefault();
+        String lang = currentLocale.getLanguage();
+        switch (lang){
+            case "ja":
+                lang = "ja";
+                break;
+            case "vi":
+                lang = "vi";
+                break;
+            default:
+                lang = "en";
+                break;
+        }
+
+        Call<WeatherForecastResponse> call = weatherService.getWeatherForecastByLatLon(lat,lon, Common.API_KEY_ID, "minutely,alerts", lang,"metric");
         call.enqueue(new Callback<WeatherForecastResponse>() {
             @Override
             public void onResponse(@NonNull Call<WeatherForecastResponse>  call, @NonNull Response<WeatherForecastResponse> response) {

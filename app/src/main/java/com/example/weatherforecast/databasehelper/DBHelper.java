@@ -1,6 +1,7 @@
 package com.example.weatherforecast.databasehelper;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -10,4 +11,5 @@ public class DBHelper extends SQLiteAssetHelper {
     public DBHelper(Context context){
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
     }
+
 }
